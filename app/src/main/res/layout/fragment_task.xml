@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.task.TaskFragment">
+
+   <EditText
+       android:id="@+id/et_title"
+       android:layout_marginTop="16dp"
+       android:layout_marginHorizontal="16dp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:hint="@string/title"
+       tools:ignore="Autofill,TextFields" />
+
+    <EditText
+        android:id="@+id/et_desc"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/description"
+        tools:ignore="Autofill,TextFields" />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:gravity="center"
+        android:text="@string/save"/>
+
+
+</LinearLayout>
