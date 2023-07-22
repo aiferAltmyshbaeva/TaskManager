@@ -12,30 +12,25 @@ import com.example.taskmanager.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
 
-    private var _binding: FragmentProfileBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentProfileBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentProfileBinding.inflate(inflater, container, false)
+    ): View {
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val profileImage = binding.imgProfile
-        val placeholderImage = R.drawable.ic_default_profile_image
-        Glide.with(this).load("")
-            .placeholder(placeholderImage)
-            .transition(DrawableTransitionOptions.withCrossFade())
-            .into(profileImage)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+//        val profileImage = binding.profileImage
+//        val placeholderImage = R.drawable.ic_profile
+//        Glide.with(this).load("")
+//            .placeholder(placeholderImage)
+//            .transition(DrawableTransitionOptions.withCrossFade())
+//            .into(profileImage)
     }
 }
