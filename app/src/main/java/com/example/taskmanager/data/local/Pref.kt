@@ -2,8 +2,9 @@ package com.example.taskmanager.data.local
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
+import java.io.Serializable
 
-class Pref(private val context: Context) {
+class Pref(private val context: Context) : Serializable{
 
     private val pref = context.getSharedPreferences(PREF_NAME, MODE_PRIVATE)
 
@@ -27,8 +28,8 @@ class Pref(private val context: Context) {
         pref.edit().putString(IMAGE_KEY, image).apply()
     }
 
-    fun getImage(): String? {
-        return pref.getString(IMAGE_KEY, null)
+    fun getImage(): String {
+        return pref.getString(IMAGE_KEY, "").toString()
     }
 
     companion object {
