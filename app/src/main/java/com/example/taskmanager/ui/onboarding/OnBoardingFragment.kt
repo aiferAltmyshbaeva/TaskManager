@@ -31,11 +31,11 @@ class OnBoardingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.viewpager.adapter = adapter
-        binding.indicator.setViewPager(binding.viewpager)
+        binding.viewPager.adapter = adapter
+        binding.indicator.setViewPager(binding.viewPager)
         adapter.registerAdapterDataObserver(binding.indicator.adapterDataObserver)
-
     }
+
     private fun onClick() {
         pref.onOnBoardingShowed()
         findNavController().navigateUp()

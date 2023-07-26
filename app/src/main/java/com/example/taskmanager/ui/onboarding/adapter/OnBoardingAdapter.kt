@@ -27,7 +27,7 @@ class OnBoardingAdapter(private val onClick:()-> Unit ) : RecyclerView.Adapter<O
     }
 
     override fun onBindViewHolder(holder: OnBoardingViewHolder, position: Int) {
-        holder.bind(data.get(position))
+        holder.bind(data[position])
     }
 
     override fun getItemCount(): Int {
@@ -43,6 +43,8 @@ class OnBoardingAdapter(private val onClick:()-> Unit ) : RecyclerView.Adapter<O
             binding.skip.isVisible = adapterPosition != data.lastIndex
 
             Glide.with(binding.ivBoard.context).load(onBoarding.image).into(binding.ivBoard)
+
+//            binding.ivBoard.loadImage(onBoarding.image)
 
             binding.btnStart.setOnClickListener {
                 onClick()

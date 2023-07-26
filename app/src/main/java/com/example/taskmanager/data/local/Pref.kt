@@ -23,9 +23,18 @@ class Pref(private val context: Context) {
         return pref.getString(NAME_KEY, null)
     }
 
+    fun saveImage(image: String) {
+        pref.edit().putString(IMAGE_KEY, image).apply()
+    }
+
+    fun getImage(): String? {
+        return pref.getString(IMAGE_KEY, null)
+    }
+
     companion object {
         const val PREF_NAME = "pref.name"
         const val SHOWED_KEY = "showed.key"
         const val NAME_KEY = "name.key"
+        const val IMAGE_KEY = "image.key"
     }
 }
