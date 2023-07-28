@@ -6,19 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
+import com.example.taskmanager.App
 import com.example.taskmanager.R
 import com.example.taskmanager.databinding.FragmentHomeBinding
-import com.example.taskmanager.model.Task
-import com.example.taskmanager.ui.task.TaskFragment.Companion.RESULT_KEY
-import com.example.taskmanager.ui.task.TaskFragment.Companion.RESULT_REQUEST_KEY
 import com.example.taskmanager.ui.task.adapter.TaskAdapter
 
 class HomeFragment : Fragment() {
 
+    private val adapter: TaskAdapter by lazy { TaskAdapter(requireContext()) }
+
     private var _binding: FragmentHomeBinding? = null
-    private val adapter = TaskAdapter()
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -33,10 +31,10 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerView.adapter = adapter
-        setFragmentResultListener(RESULT_REQUEST_KEY) { _, bundle ->
-            val data = bundle.getSerializable(RESULT_KEY) as Task
-            adapter.addTask(data)
-        }
+
+        val data = App.db.taskDao().getAll()
+        adapter.addTasks(data)
+
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.taskFragment)
         }

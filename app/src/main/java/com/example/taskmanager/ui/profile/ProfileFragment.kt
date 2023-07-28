@@ -45,7 +45,6 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.etName.setText(pref.getName())
-
         binding.etName.addTextChangedListener {
             pref.saveName(binding.etName.text.toString())
         }
