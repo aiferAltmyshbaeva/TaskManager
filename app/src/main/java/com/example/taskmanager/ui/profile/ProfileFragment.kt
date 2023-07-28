@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.taskmanager.R
@@ -44,10 +45,9 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.etName.setText(pref.getName())
-        binding.etName.setOnFocusChangeListener { v, hasFocus ->
-            if (!hasFocus) {
-                pref.saveName(binding.etName.text.toString())
-            }
+
+        binding.etName.addTextChangedListener {
+            pref.saveName(binding.etName.text.toString())
         }
 
         binding.profileImage.loadImage(pref.getImage())
