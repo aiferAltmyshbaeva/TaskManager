@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import java.io.Serializable
 
-class Pref(private val context: Context) : Serializable{
+class Pref(private val context: Context) : Serializable {
 
     private val pref = context.getSharedPreferences(PREF_NAME, MODE_PRIVATE)
 

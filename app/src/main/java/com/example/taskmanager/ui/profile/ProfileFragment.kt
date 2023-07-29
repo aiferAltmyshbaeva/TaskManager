@@ -18,6 +18,7 @@ import com.example.taskmanager.databinding.FragmentProfileBinding
 
 
 class ProfileFragment : Fragment() {
+
     private lateinit var binding: FragmentProfileBinding
     private val pref: Pref by lazy {
         Pref(requireContext())

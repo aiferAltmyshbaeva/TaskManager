@@ -42,7 +42,7 @@ class TaskAdapter(private val context: Context) : RecyclerView.Adapter<TaskAdapt
     private fun showAlertDialog(task: Task) {
         val builder = AlertDialog.Builder(context)
 
-        builder.setTitle("Alert Dialog")
+        builder.setTitle("Delete Task")
         builder.setMessage("Do you want to delete task id: ${task.id}?")
         builder.setPositiveButton("OK") { dialog, _ ->
             deleteTask(task)
@@ -68,6 +68,7 @@ class TaskAdapter(private val context: Context) : RecyclerView.Adapter<TaskAdapt
     inner class TaskViewHolder(private val binding: ItemTaskBinding) : ViewHolder(binding.root) {
 
         fun bind(task: Task) {
+
             binding.tvTitle.text = task.title
             binding.tvDesc.text = task.desc
         }
