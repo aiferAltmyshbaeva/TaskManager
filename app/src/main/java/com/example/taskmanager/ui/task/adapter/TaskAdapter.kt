@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.taskmanager.App
+import com.example.taskmanager.R
 import com.example.taskmanager.databinding.ItemTaskBinding
 import com.example.taskmanager.model.Task
+import com.example.taskmanager.ui.home.HomeFragment
 
-class TaskAdapter(private val context: Context) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
+class TaskAdapter(private val onClick: (Task) -> Unit, private val onLongClick: (Task) -> Unit) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
     private val list = arrayListOf<Task>()
 
@@ -32,33 +34,6 @@ class TaskAdapter(private val context: Context) : RecyclerView.Adapter<TaskAdapt
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         holder.bind(list[position])
-
-        holder.itemView.setOnLongClickListener {
-            showAlertDialog(list[position])
-            true
-        }
-    }
-
-    private fun showAlertDialog(task: Task) {
-        val builder = AlertDialog.Builder(context)
-
-        builder.setTitle("Delete Task")
-        builder.setMessage("Do you want to delete task id: ${task.id}?")
-        builder.setPositiveButton("OK") { dialog, _ ->
-            deleteTask(task)
-        }
-        builder.setNegativeButton("Cancel") { dialog, _ ->
-            dialog.dismiss()
-        }
-
-        val alertDialog = builder.create()
-        alertDialog.show()
-    }
-
-    private fun deleteTask(task: Task) {
-        list.remove(task)
-        App.db.taskDao().delete(task)
-        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
@@ -68,9 +43,15 @@ class TaskAdapter(private val context: Context) : RecyclerView.Adapter<TaskAdapt
     inner class TaskViewHolder(private val binding: ItemTaskBinding) : ViewHolder(binding.root) {
 
         fun bind(task: Task) {
-
             binding.tvTitle.text = task.title
             binding.tvDesc.text = task.desc
+            binding.root.setOnClickListener{
+                onClick(task)
+            }
+            itemView.setOnLongClickListener {
+                onLongClick(task)
+                true
+            }
         }
     }
 }

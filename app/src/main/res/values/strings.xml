@@ -10,4 +10,9 @@
     <string name="save">Save</string>
     <string name="title">Title</string>
     <string name="name">Name</string>
+    <string name="delete_task">Delete Task</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+    <string name="update">Update</string>
 </resources>
