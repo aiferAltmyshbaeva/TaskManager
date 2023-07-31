@@ -43,20 +43,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-//        navController.addOnDestinationChangedListener(object :
-//            NavController.OnDestinationChangedListener {
-//            override fun onDestinationChanged(
-//                controller: NavController,
-//                destination: NavDestination,
-//                arguments: Bundle?
-//            ) {
-//                TODO("Not yet implemented")
-//            }
-//        })
-
-//        navController.addOnDestinationChangedListener {controller, destination, arguments ->
-//        }
-
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.onBoardingFragment) {
                 navView.isVisible = false

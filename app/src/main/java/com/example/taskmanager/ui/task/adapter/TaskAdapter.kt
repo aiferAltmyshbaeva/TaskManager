@@ -12,7 +12,8 @@ import com.example.taskmanager.databinding.ItemTaskBinding
 import com.example.taskmanager.model.Task
 import com.example.taskmanager.ui.home.HomeFragment
 
-class TaskAdapter(private val onClick: (Task) -> Unit, private val onLongClick: (Task) -> Unit) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
+class TaskAdapter(private val onClick: (Task) -> Unit, private val onLongClick: (Task) -> Unit) :
+    RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
     private val list = arrayListOf<Task>()
 
@@ -45,7 +46,7 @@ class TaskAdapter(private val onClick: (Task) -> Unit, private val onLongClick: 
         fun bind(task: Task) {
             binding.tvTitle.text = task.title
             binding.tvDesc.text = task.desc
-            binding.root.setOnClickListener{
+            binding.root.setOnClickListener {
                 onClick(task)
             }
             itemView.setOnLongClickListener {

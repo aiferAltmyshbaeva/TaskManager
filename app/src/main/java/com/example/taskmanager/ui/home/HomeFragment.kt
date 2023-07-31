@@ -66,19 +66,18 @@ class HomeFragment : Fragment() {
             .show()
     }
 
-    private fun deleteTask(task: Task) {
-        App.db.taskDao().delete(task)
-        setData()
-    }
-
     private fun setData() {
         val data = App.db.taskDao().getAll()
         adapter.addTasks(data)
     }
 
+    private fun deleteTask(task: Task) {
+        App.db.taskDao().delete(task)
+        setData()
+    }
+
     companion object {
         const val TASK_KEY = "task.key"
     }
-
 
 }

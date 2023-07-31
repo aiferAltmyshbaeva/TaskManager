@@ -12,7 +12,6 @@ import com.example.taskmanager.databinding.FragmentTaskBinding
 import com.example.taskmanager.model.Task
 import com.example.taskmanager.ui.home.HomeFragment.Companion.TASK_KEY
 
-
 class TaskFragment : Fragment() {
 
     private lateinit var binding: FragmentTaskBinding
@@ -26,7 +25,7 @@ class TaskFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding){
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
         task = arguments?.getSerializable(TASK_KEY) as Task?
         if (task != null) {
@@ -45,6 +44,14 @@ class TaskFragment : Fragment() {
         }
     }
 
+    private fun saveTask() {
+        val data = Task(
+            title = binding.etTitle.text.toString(),
+            desc = binding.etDesc.text.toString(),
+        )
+        App.db.taskDao().insert(data)
+    }
+
     private fun updateTask() {
         val data = task?.copy(
             title = binding.etTitle.text.toString(),
@@ -53,13 +60,5 @@ class TaskFragment : Fragment() {
         if (data != null) {
             App.db.taskDao().update(data)
         }
-    }
-
-    private fun saveTask() {
-        val data = Task(
-            title = binding.etTitle.text.toString(),
-            desc = binding.etDesc.text.toString(),
-        )
-        App.db.taskDao().insert(data)
     }
 }

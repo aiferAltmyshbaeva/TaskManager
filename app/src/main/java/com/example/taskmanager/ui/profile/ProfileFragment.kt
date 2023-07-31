@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide
 import com.example.taskmanager.R
 import com.example.taskmanager.data.local.Pref
 import com.example.taskmanager.databinding.FragmentProfileBinding
+import com.example.taskmanager.utils.loadImage
 
 
 class ProfileFragment : Fragment() {
@@ -42,16 +43,16 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.etName.setText(pref.getName())
-        binding.etName.addTextChangedListener {
-            pref.saveName(binding.etName.text.toString())
+        etName.setText(pref.getName())
+        etName.addTextChangedListener {
+            pref.saveName(etName.text.toString())
         }
 
-        binding.profileImage.loadImage(pref.getImage())
-        binding.profileImage.setOnClickListener {
+        profileImage.loadImage(pref.getImage())
+        profileImage.setOnClickListener {
             val intent = Intent()
             intent.type = "image/*"
             intent.action = Intent.ACTION_GET_CONTENT
@@ -60,8 +61,5 @@ class ProfileFragment : Fragment() {
     }
 }
 
-private fun ImageView.loadImage(url: String?) {
-    Glide.with(this).load(url).placeholder(R.drawable.ic_profile).into(this)
-}
 
 
