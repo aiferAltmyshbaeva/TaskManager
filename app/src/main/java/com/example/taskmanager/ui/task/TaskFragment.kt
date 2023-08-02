@@ -35,6 +35,10 @@ class TaskFragment : Fragment() {
         }
 
         binding.btnSave.setOnClickListener {
+            if (etTitle.text.isNullOrBlank()) {
+                etTitle.error = getString(R.string.title_cannot_be_empty)
+                return@setOnClickListener
+            }
             if (task == null) {
                 saveTask()
             } else {
@@ -44,18 +48,18 @@ class TaskFragment : Fragment() {
         }
     }
 
-    private fun saveTask() {
+    private fun saveTask() = with(binding) {
         val data = Task(
-            title = binding.etTitle.text.toString(),
-            desc = binding.etDesc.text.toString(),
+            title = etTitle.text.toString(),
+            desc = etDesc.text.toString(),
         )
         App.db.taskDao().insert(data)
     }
 
-    private fun updateTask() {
+    private fun updateTask() = with(binding) {
         val data = task?.copy(
-            title = binding.etTitle.text.toString(),
-            desc = binding.etDesc.text.toString(),
+            title = etTitle.text.toString(),
+            desc = etDesc.text.toString(),
         )
         if (data != null) {
             App.db.taskDao().update(data)
