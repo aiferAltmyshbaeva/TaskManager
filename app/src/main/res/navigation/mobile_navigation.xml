@@ -59,4 +59,10 @@
         android:label="fragment_auth"
         tools:layout="@layout/fragment_auth" />
 
+    <fragment
+        android:id="@+id/googleFragment"
+        android:name="com.example.taskmanager.ui.auth.google.GoogleFragment"
+        android:label="fragment_google"
+        tools:layout="@layout/fragment_google" />
+
 </navigation>

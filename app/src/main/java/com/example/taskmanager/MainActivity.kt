@@ -30,7 +30,8 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
         if (FirebaseAuth.getInstance().currentUser?.uid == null) {
-            navController.navigate(R.id.phoneFragment)
+            navController.navigate(R.id.authFragment)
+            //navController.navigate(R.id.phoneFragment)
         }
 
         if (!pref.isOnBoardingShowed())
@@ -53,7 +54,8 @@ class MainActivity : AppCompatActivity() {
             R.id.authFragment,
             R.id.onBoardingFragment,
             R.id.phoneFragment,
-            R.id.verifyFragment
+            R.id.verifyFragment,
+            R.id.googleFragment
         )
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (fragmentsWithoutBottomNav.contains(destination.id)) {

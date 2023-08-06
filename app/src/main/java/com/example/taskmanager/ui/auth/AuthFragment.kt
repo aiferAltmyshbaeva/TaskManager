@@ -21,10 +21,13 @@ class AuthFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnPhone.setOnClickListener {
+        btnPhone.setOnClickListener {
             findNavController().navigate(R.id.phoneFragment)
+        }
+        btnGoogle.setOnClickListener {
+            findNavController().navigate(R.id.googleFragment)
         }
     }
 

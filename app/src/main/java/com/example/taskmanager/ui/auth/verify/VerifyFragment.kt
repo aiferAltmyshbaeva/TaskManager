@@ -18,10 +18,10 @@ import com.google.firebase.auth.PhoneAuthProvider
 class VerifyFragment : Fragment() {
 
     private lateinit var binding: FragmentVerifyBinding
-
     private val auth: FirebaseAuth by lazy {
         FirebaseAuth.getInstance()
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
