@@ -16,4 +16,9 @@
     <string name="cancel">Cancel</string>
     <string name="update">Update</string>
     <string name="title_cannot_be_empty">Title cannot be empty</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="send">Send</string>
+    <string name="enter_code_from_sms">Enter Code from SMS</string>
+    <string name="accept">Accept</string>
+    <string name="any_error">Something is wrong</string>
 </resources>
