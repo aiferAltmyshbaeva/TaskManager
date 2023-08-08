@@ -2,6 +2,7 @@ package com.example.taskmanager.ui.profile
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,6 +21,8 @@ import com.example.taskmanager.data.local.Pref
 import com.example.taskmanager.databinding.FragmentProfileBinding
 import com.example.taskmanager.utils.loadImage
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class ProfileFragment : Fragment() {
@@ -50,7 +53,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?): Unit = with(binding) {
         super.onViewCreated(view, savedInstanceState)
 
-        tvExit.setOnClickListener {
+        imgExit.setOnClickListener {
             showAlertDialog()
         }
 
@@ -89,7 +92,8 @@ class ProfileFragment : Fragment() {
             .setTitle(getString(R.string.exit_profile))
             .setMessage(getString(R.string.are_you_sure))
             .setPositiveButton(getString(R.string.yes)) { dialog, _ ->
-                FirebaseAuth.getInstance().signOut()
+//                FirebaseAuth.getInstance().signOut()
+                Firebase.auth.signOut()
                 findNavController().navigate(
                     R.id.authFragment,
                     null,
@@ -103,6 +107,7 @@ class ProfileFragment : Fragment() {
             }
             .show()
     }
+
 }
 
 

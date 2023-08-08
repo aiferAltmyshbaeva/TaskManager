@@ -1,17 +1,17 @@
 package com.example.taskmanager.ui.auth.phone
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.taskmanager.App
 import com.example.taskmanager.R
 import com.example.taskmanager.databinding.FragmentPhoneBinding
 import com.example.taskmanager.utils.showToast
 import com.google.firebase.FirebaseException
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
@@ -20,9 +20,6 @@ import java.util.concurrent.TimeUnit
 class PhoneFragment : Fragment() {
 
     private lateinit var binding: FragmentPhoneBinding
-    private val auth: FirebaseAuth by lazy {
-        FirebaseAuth.getInstance()
-    }
 
     private val callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
@@ -49,14 +46,15 @@ class PhoneFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnSend.setOnClickListener {
-            val options = PhoneAuthOptions.newBuilder(auth)
-                .setPhoneNumber("+996" + binding.etPhone.text.toString()) // Phone number to verify
-                .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-                .setActivity(requireActivity()) // Activity (for callback binding)
-                .setCallbacks(callbacks) // OnVerificationStateChangedCallbacks
+        btnSend.setOnClickListener {
+            val phone = tilPhone.prefixText.toString() + etPhone.text.toString()
+            val options = PhoneAuthOptions.newBuilder(App.auth)
+                .setPhoneNumber(phone)
+                .setTimeout(60L, TimeUnit.SECONDS)
+                .setActivity(requireActivity())
+                .setCallbacks(callbacks)
                 .build()
             PhoneAuthProvider.verifyPhoneNumber(options)
         }

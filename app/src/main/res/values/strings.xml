@@ -22,4 +22,7 @@
     <string name="accept">Accept</string>
     <string name="any_error">Something is wrong</string>
     <string name="exit_profile">Exit Profile</string>
+    <string name="brand">Brand</string>
+    <string name="model">Model</string>
+    <string name="failure">Failure</string>
 </resources>
