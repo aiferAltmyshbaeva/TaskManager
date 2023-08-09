@@ -25,4 +25,10 @@
     <string name="brand">Brand</string>
     <string name="model">Model</string>
     <string name="failure">Failure</string>
+    <string name="successfully_saved">Successfully saved!</string>
+    <string name="phone">Phone</string>
+    <string name="google">Google</string>
+    <string name="skip">Skip</string>
+    <string name="desc">Desc</string>
+    <string name="get_started">Get Started</string>
 </resources>

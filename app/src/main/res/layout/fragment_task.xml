@@ -7,7 +7,7 @@
     tools:context=".ui.task.TaskFragment">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textField_title"
+        android:id="@+id/til_title"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textField_desc"
+        android:id="@+id/til_desc"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -12,18 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:prefixText="+996"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:prefixText="+996">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_phone"
-            android:inputType="phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/enter_phone_number" />
+            android:hint="@string/enter_phone_number"
+            android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

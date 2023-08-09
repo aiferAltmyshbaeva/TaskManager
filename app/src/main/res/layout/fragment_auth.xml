@@ -3,21 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".ui.auth.AuthFragment">
 
     <Button
         android:id="@+id/btn_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Phone"/>
+        android:text="@string/phone" />
 
     <Button
-        android:layout_marginTop="16dp"
         android:id="@+id/btn_google"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Google"/>
+        android:layout_marginTop="16dp"
+        android:text="@string/google" />
 
 </LinearLayout>

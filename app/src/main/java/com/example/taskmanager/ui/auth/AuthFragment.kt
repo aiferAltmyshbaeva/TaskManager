@@ -85,11 +85,6 @@ class AuthFragment : Fragment() {
             btnGoogle.setOnClickListener {
                 signIn()
             }
-
         }
-
-
     }
-
-
 }

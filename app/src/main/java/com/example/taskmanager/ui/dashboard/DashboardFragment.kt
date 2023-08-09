@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.taskmanager.App
+import com.example.taskmanager.R
 import com.example.taskmanager.databinding.FragmentDashboardBinding
 import com.example.taskmanager.model.Car
 import com.example.taskmanager.utils.showToast
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class DashboardFragment : Fragment() {
@@ -40,7 +40,7 @@ class DashboardFragment : Fragment() {
                 .add(data).addOnSuccessListener {
                     etBrand.text?.clear()
                     etModel.text?.clear()
-                    showToast("Successfully saved!")
+                    showToast(getString(R.string.successfully_saved))
                 }.addOnFailureListener {
                     showToast(it.message.toString())
                 }

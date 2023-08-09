@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.taskmanager.App
 import com.example.taskmanager.databinding.FragmentNotificationsBinding
-import com.google.firebase.auth.FirebaseAuth
+import com.example.taskmanager.model.Car
+import com.example.taskmanager.ui.notifications.adapter.CarAdapter
+import com.example.taskmanager.utils.showToast
 import com.google.firebase.firestore.FirebaseFirestore
 
 class NotificationsFragment : Fragment() {
@@ -18,6 +20,8 @@ class NotificationsFragment : Fragment() {
         FirebaseFirestore.getInstance()
     }
 
+    private val adapter = CarAdapter()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -27,9 +31,16 @@ class NotificationsFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?): Unit = with(binding) {
         super.onViewCreated(view, savedInstanceState)
+        recyclerView.adapter = adapter
         db.collection(App.auth.currentUser?.uid.toString())
+            .get().addOnSuccessListener {
+                val data = it.toObjects(Car::class.java)
+                adapter.addCars(data)
+            }.addOnFailureListener {
+                showToast(it.message.toString())
+            }
     }
 
     override fun onDestroyView() {

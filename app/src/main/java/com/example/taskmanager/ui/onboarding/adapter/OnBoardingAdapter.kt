@@ -54,7 +54,7 @@ class OnBoardingAdapter(private val onClick: () -> Unit) :
             tvDesc.text = onBoarding.desc
             btnStart.isVisible = adapterPosition == data.lastIndex
             skip.isVisible = adapterPosition != data.lastIndex
-            onBoarding.image?.let { ivBoard.loadImage(it) }
+            onBoarding.image?.let { imgBoard.loadImage(it) }
 
             btnStart.setOnClickListener {
                 onClick()
