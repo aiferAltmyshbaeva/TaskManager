@@ -36,12 +36,10 @@ class MainActivity : AppCompatActivity() {
 
         if (App.auth.currentUser?.uid == null) {
             navController.navigate(R.id.authFragment)
-            //navController.navigate(R.id.phoneFragment)
         }
 
         if (!pref.isOnBoardingShowed())
             navController.navigate(R.id.onBoardingFragment)
-
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
@@ -54,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
-            Log.e("ololo", "onCreate: " + task.result)
+            Log.e("ololo", "token: " + task.result)
         }
 
         setupActionBarWithNavController(navController, appBarConfiguration)

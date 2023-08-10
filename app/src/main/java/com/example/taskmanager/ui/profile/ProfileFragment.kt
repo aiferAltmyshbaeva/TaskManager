@@ -66,21 +66,6 @@ class ProfileFragment : Fragment() {
             launcher.launch(intent)
         }
 
-//        if (FirebaseAuth.getInstance().currentUser?.uid == null) {
-//            val placeholderImage = R.drawable.ic_profile
-//            Glide.with(requireActivity()).load("")
-//                .placeholder(placeholderImage)
-//                .transition(DrawableTransitionOptions.withCrossFade())
-//                .into(profileImage)
-//        } else {
-//            profileImage.loadImage(pref.getImage())
-//            profileImage.setOnClickListener {
-//                val intent = Intent()
-//                intent.type = "image/*"
-//                intent.action = Intent.ACTION_GET_CONTENT
-//                launcher.launch(intent)
-//            }
-//        }
     }
 
     private fun showAlertDialog() {
